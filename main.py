@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from typing import List, Dict
+import uvicorn
 
 app = FastAPI()
 
@@ -35,3 +36,6 @@ def get_top_player():
 	"""Return the top ranked tennis player."""
 	top_player = min(tennis_players, key=lambda p: p["ranking"])
 	return top_player
+
+if __name__ == '__main__':
+    uvicorn.run('main:app', host='0.0.0.0', port=8000)
